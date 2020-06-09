@@ -1,0 +1,86 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Select your house</title>
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+    <div id="spinner"><div class="inner"></div></div>
+
+    <div class="invoice-box">
+
+        <table cellpadding="0" cellspacing="0">  
+          
+            <tr class="heading">
+                <td>
+                    Name
+                    <input name="Name" v-model="Name" @blur="onBlur()" placeholder="" />                
+                </td>
+
+                <td>
+                    Price min <input name="PriceMin" @blur="onBlur()" v-model="PriceMin" placeholder="0" /><br> 
+                    Price max <input name="PriceMax" @blur="onBlur()" v-model="PriceMax" placeholder="1000000" />
+                </td>
+
+                <td>
+                    Bedrooms
+                    <select name="CountBedrooms" @change="onChange()" class="form-control" v-model="selectedCountBedrooms">
+                       <option value="0">---</option> 
+                       <option value="3">3</option>
+                       <option value="4">4</option>
+                       <option value="5">5</option>                       
+                    </select>                     
+                </td>
+              
+                <td>
+                    Bathrooms
+                    <select name="CountBathrooms" @change="onChange()" class="form-control" v-model="selectedCountBathrooms">
+                       <option value="0">---</option>                         
+                       <option value="2">2</option>
+                       <option value="3">3</option>
+                    </select>                        
+                </td>
+
+                <td>
+                    Storeys
+                    <select name="CountStoreys" @change="onChange()" class="form-control" v-model="selectedCountStoreys">
+                       <option value="0">---</option>                         
+                       <option value="1">1</option>
+                       <option value="2">2</option>
+                    </select>                        
+                </td>
+
+                <td>
+                    Garages
+                    <select name="CountGarages" @change="onChange()" class="form-control" v-model="selectedCountGarages">
+                       <option value="0">---</option>                         
+                       <option value="1">1</option>
+                       <option value="2">2</option>
+                       <option value="3">3</option>    
+                    </select>                        
+                </td>                                    
+            </tr>
+
+      			<tr class="item" v-for="item in items" v-cloak>
+                     <td>{{ item.name }}</td>   
+                     <td>${{ item.price }}</td>        
+                     <td>{{ item.bedrooms }}</td>
+                     <td>{{ item.bathrooms }}</td>
+                     <td>{{ item.storeys }}</td>
+                     <td>{{ item.garages }}</td>                                
+      			</tr>
+
+        </table>
+    </div>
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="vue.min.js"></script>
+<script src="jQuery-2.2.0.min.js"></script>
+<script src="mine.js"></script>
+</html>
